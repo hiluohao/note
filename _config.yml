@@ -3,8 +3,8 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: 微课精选
-subtitle: 精条细选好微课，一起学习交流。
+title: 罗浩笔记
+subtitle: 罗浩创业笔记-记录美好生活。
 description: 生命在于运动，知识在于积累，一起学习，一起交流。
 keywords: 罗浩微课堂 罗浩博客 罗浩工作室 罗浩研习社
 author: 罗浩
@@ -84,3 +84,8 @@ deploy:
        
        
 
+# hexo-admin authentification
+admin:
+  username: luohao
+  password_hash: $2a$10$h2sj8hTIhb1ymKWdsbTvD.Ni.naN.8XIdtgXeuTC1vjsrfW95eWEy
+  secret: my super secret phrase
