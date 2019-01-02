@@ -89,3 +89,4 @@ admin:
   username: luohao
   password_hash: $2a$10$h2sj8hTIhb1ymKWdsbTvD.Ni.naN.8XIdtgXeuTC1vjsrfW95eWEy
   secret: my super secret phrase
+  deployCommand: './hexo-deploy'
