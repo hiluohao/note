@@ -1,37 +1,35 @@
-language: node_js #设置语言
-node_js: node
+language: node_js  #设置语言
 
-# 缓存node_modules文件夹，节省部署的时间
-#cache:
-# directories:
-# - node_modules
+node_js: stable  #设置相应的版本
 
-# 源码所在分支
-branches:
-only:
-- pages
-
-# 安装依赖
+# 开始构建
+before_install:
+  - export TZ='Asia/Shanghai'  #统一构建环境和博客配置的时区, 防止文章时间错误
+  
 install:
-- npm install hexo-cli -g
-- npm install hexo-generator-searchdb --save
-- npm install hexo-generator-feed --save
-- npm uninstall hexo-generator-index --save
-- npm install hexo-generator-index-pin-top --save
-- npm install
+  - npm install  #配置Hexo环境
 
-# 执行的命令
 script:
-- hexo clean
-- hexo generate
-- hexo deploy
+  - hexo cl  #清除
+  - hexo g  #生成
 
-# 部署
-deploy:
-provider: pages
-skip-cleanup: true
-github-token: 1475f813ddbf931182d5021233a01d61ed416de3 # Set in travis-ci.org dashboard, marked secure
-keep-history: true
-local-dir: public
-repo: git@github.com:hiluohao/note.git # 你的GitHub Page仓库地址
-target-branch: master
+after_script:
+  - cd ./public
+  - git init
+  - git config user.name "luohao"  #用户名
+  - git config user.email "197625807@qq.com"  #邮箱
+  - git add .
+  - git commit -m "Site deployed by Travis CI"  #提交Commit时的说明
+  - git push --force --quiet "https://${luohao}@${GH_REF}" master:master  #GH_TOKEN是在Travis中配置Token的名称
+# 结束构建
+
+branches:
+  only:
+    - source  #只监测master之外新增的source分支
+env:
+ global:
+   - GH_REF: git@github.com:hiluohao/note.git  #设置GH_REF
+
+cache:
+  directories:  #缓存特定目录, 加快构建速度
+    - node_modules
