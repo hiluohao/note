@@ -30,7 +30,7 @@ script:
 deploy:
 provider: pages
 skip-cleanup: true
-github-token: 9e8c81ac5da92fedc01c5b7115e4f6897a13eb5d # Set in travis-ci.org dashboard, marked secure
+github-token: 1475f813ddbf931182d5021233a01d61ed416de3 # Set in travis-ci.org dashboard, marked secure
 keep-history: true
 local-dir: public
 repo: git@github.com:hiluohao/note.git # 你的GitHub Page仓库地址
